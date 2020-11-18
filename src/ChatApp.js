@@ -6,7 +6,7 @@ class ChatApp extends React.Component{
     constructor(props){
         super(props);
         this.state={messages:[],type:""}
-        this.socket = io('localhost:4001',{query:`username=${props.uname}`});
+        this.socket = io('192.168.0.12:4001',{query:`username=${props.uname}`});
         this.socket.on("server:message",messageob=>{this.addmessage(messageob)});
         this.socket.on("server:typingStatus",(datan)=>{this.setState({type:datan})});
         
@@ -29,12 +29,12 @@ class ChatApp extends React.Component{
              this.addmessage(data);
              this.socket.emit('client:typing',null);
             
-             //this.utyping(data);
+            //  this.utyping(data);
              
     }
     utyping=()=>
     {
-        //this.setState({typing:true});
+        this.setState({typing:true});
         this.socket.emit('client:typing',`${this.props.uname} is typing`);
     }
     render()

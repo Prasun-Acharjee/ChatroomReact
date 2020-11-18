@@ -18,8 +18,13 @@ render(){
         return <ChatApp uname={this.state.uname} submit={this.state.submitted}/>;
         }
         else {
-        return(<div><input  onChange={this.change} type="text" /> <button onClick={this.click}>Submit</button></div>);
+        return(
+        <div>
+            <input  onChange={this.change} type="text" placeholder="ENTER USER NAME"/> 
+            <button onClick={this.click}>Submit</button>
+            </div>
+            );
         }    
-}
+    }
 }
 export default ChatHome;
